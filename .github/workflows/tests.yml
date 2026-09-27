@@ -43,6 +43,18 @@ jobs:
           name: allure-results
           path: reports/allure-results
 
+      - name: Fill Excel report
+        if: always()
+        continue-on-error: true
+        run: python tools/fill_excel_report.py --executed-by "GitHub Actions"
+
+      - name: Upload Excel report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: excel-test-report
+          path: reports/SauceDemo_Automation_Test_Report_Filled.xlsx
+
       - name: Get Allure history
         if: always() && github.ref == 'refs/heads/main'
         uses: actions/checkout@v4
