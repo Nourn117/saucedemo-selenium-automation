@@ -7,9 +7,6 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -30,58 +27,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests
-        run: pytest --alluredir=reports/allure-results
+        run: pytest
 
-      - name: Show Allure results
-        if: always()
-        run: ls -la reports/allure-results || echo "No results folder"
-
-      - name: Upload Allure results
-        if: always()
+      - name: Upload failure screenshots
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: reports/allure-results
-
-      - name: Fill Excel report
-        if: always()
-        continue-on-error: true
-        run: python tools/fill_excel_report.py --executed-by "GitHub Actions"
-
-      - name: Upload Excel report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: excel-test-report
-          path: reports/SauceDemo_Automation_Test_Report_Filled.xlsx
-
-      - name: Get Allure history
-        if: always() && github.ref == 'refs/heads/main'
-        uses: actions/checkout@v4
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Set up Java
-        if: always() && github.ref == 'refs/heads/main'
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "17"
-
-      - name: Build Allure report
-        if: always() && github.ref == 'refs/heads/main'
-        run: |
-          npm install -g allure-commandline
-          mkdir -p reports/allure-results
-          if [ -d gh-pages/history ]; then cp -r gh-pages/history reports/allure-results/history; fi
-          allure generate reports/allure-results --clean -o allure-report
-
-      - name: Publish report to GitHub Pages
-        if: always() && github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-report
+          name: failure-screenshots
+          path: reports/screenshots
+          if-no-files-found: ignore
