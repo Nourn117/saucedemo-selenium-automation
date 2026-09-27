@@ -1,0 +1,1 @@
+[{"values":["Chrome"],"name":"Browser"},{"values":["153.0.8010.52"],"name":"Browser.Version"},{"values":["True"],"name":"Headless"},{"values":["https://www.saucedemo.com"],"name":"Base.URL"},{"values":["3.12.14"],"name":"Python.Version"},{"values":["4.25.0"],"name":"Selenium.Version"},{"values":["Linux 6.17.0-1022-azure"],"name":"OS"}]

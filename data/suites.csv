@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","22","AUT-001: Site opens with correct title","tests","2026-09-27","passed","2026-09-27","","TS-01 Smoke","",""
