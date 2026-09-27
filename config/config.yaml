@@ -1,0 +1,11 @@
+base_url: https://www.saucedemo.com
+browser: chrome
+headless: false
+timeout: 10
+password: secret_sauce
+users:
+  standard: standard_user
+  locked_out: locked_out_user
+  problem: problem_user
+  error: error_user
+  visual: visual_user
