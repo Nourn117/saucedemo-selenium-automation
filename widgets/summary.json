@@ -1,1 +1,1 @@
-{"reportName":"SauceDemo Allure Report","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"time":{"start":1790605749295,"stop":1790605749300,"duration":5,"minDuration":5,"maxDuration":5,"sumDuration":5}}
+{"reportName":"SauceDemo Allure Report","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":4,"passed":8,"unknown":0,"total":12},"time":{"start":1790606415439,"stop":1790606446452,"duration":31013,"minDuration":3,"maxDuration":5889,"sumDuration":21181}}
